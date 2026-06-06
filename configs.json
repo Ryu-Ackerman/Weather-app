@@ -1,7 +1,5 @@
 {
-   "_comment_":"This limit can be changed using the `limit -c` command",
-
    "user": {
-      "limit": 20
+      "limit": 25
    }
 }

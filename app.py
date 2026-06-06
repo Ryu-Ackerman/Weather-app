@@ -45,9 +45,11 @@ class Returner:
                     if self.c == 'q':
                         sys.exit()
                     lst.append(self.c)
+
             elif ' '.join(sys.argv[1:]) == "average":
                 print('The average function must be followed by -d (days) or -s (searches)!')
                 sys.exit()
+
             else:
                 self.c = " ".join(sys.argv[1:]).lower()
                 if not lst:
@@ -98,6 +100,7 @@ class Returner:
                 self.longitude = j['results'][int(user) - 1]['longitude']#if the user chooses a number it subtract one to match everything (1 == 0, 2 == 1 and etc.)
                 self.latitude = j['results'][int(user) -1]['latitude']
                 return
+            
             except requests.exceptions.RequestException:
                 print("Check your connection sir!")
 
@@ -175,6 +178,7 @@ def forecast() -> None:
 
 def get_country() -> None:
     returner.finder()
+
     try:
         api_2 = f'https://api.open-meteo.com/v1/forecast?latitude={returner.latitude}&longitude={returner.longitude}&current_weather=true'
 
@@ -213,7 +217,7 @@ def get_country() -> None:
 
 
 def average_search_func(directory: str, num_of_days: int, c_name: str) -> None:#an average temperature and windspeed calculator in a given number of searches from the user input
-    nm = []
+    name = []
     tem = []
     w__s = []
 
@@ -222,9 +226,9 @@ def average_search_func(directory: str, num_of_days: int, c_name: str) -> None:#
         reader = csv.DictReader(f)
         for i in reader:
             if i['city'] == c_name:
-                nm.append(i)
+                name.append(i)
 
-        last_lines = deque(nm, maxlen=num_of_days)
+        last_lines = deque(name, maxlen=num_of_days)
         for x in last_lines:
             temp = x['temperature']
             ws = x['windspeed']
@@ -234,7 +238,7 @@ def average_search_func(directory: str, num_of_days: int, c_name: str) -> None:#
 
         avgt = sum(tem)/len(tem)
         avgw = sum(w__s)/len(w__s)
-        last_days = len(nm)
+        last_days = len(name)
 
         if num_of_days > last_days: 
             raise ValueError #if the user input is higher than the available number of searches in csv it will raise a ValueError
