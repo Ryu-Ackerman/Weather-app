@@ -42,6 +42,7 @@ def change_limit():
 
     with open('configs.json', 'w') as f:
         json.dump(r,f,indent=3)
+
     with open('kregg.csv', 'w', newline='') as f:#writing over the csv after storing everything to a list and modifying it
         
         writer = csv.DictWriter(f, fieldnames=columns)
@@ -77,6 +78,7 @@ def clean():
 def weekly_checker():
     with open('weekly.json') as f:
         reader = json.load(f)
+        
         tf = TimezoneFinder()
         zone = tf.timezone_at(
             lng=reader['configs']['longitude'],
