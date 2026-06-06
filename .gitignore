@@ -1,0 +1,4 @@
+__pycache__/
+weather_venv/
+test.py
+wsl_weather_venv/
