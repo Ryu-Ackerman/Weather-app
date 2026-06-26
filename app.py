@@ -9,7 +9,7 @@ from zoneinfo import ZoneInfo
 from collections import deque
 from cleaner import clean, weekly_checker, change_limit #functions from cleaner.py 
 from typing import Any as any
-
+from constants import WEEK, MONTHS
 
 class Collect_data():
 
@@ -105,20 +105,6 @@ class Returner:
                 print("Check your connection sir!")
 
 returner = Returner()
-
-WEEK = [
-    'Monday','Tuesday','Wednesday',
-    'Thursday','Friday','Saturday',
-    'Sunday'
-]
-
-MONTHS = {
-        '01': 'Jan', '02': 'Feb', '03': 'Mar', '04': 'Apr',
-        '05': 'May','06': 'Jun', '07': 'Jul','08': 'Aug',
-        '09': 'Sep','10': 'Oct','11': 'Nov','12': 'Dec'
-}
-
-
 
 def forecast() -> None:
     returner.finder()

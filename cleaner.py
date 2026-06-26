@@ -1,16 +1,12 @@
-import csv
 from timezonefinder import TimezoneFinder
 from datetime import datetime
 from zoneinfo import ZoneInfo
+from constants import WEEK
+import csv
 import json
 import requests
 import calendar
 
-WEEK = [
-    'Monday','Tuesday','Wednesday',
-    'Thursday','Friday','Saturday',
-    'Sunday'
-]
 
 def return_lst():
     with open('kregg.csv') as f:
